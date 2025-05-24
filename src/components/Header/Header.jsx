@@ -1,28 +1,43 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Header = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `font-bold ${isActive ? "text-[#7E90FE]" : ""}`
+          }
+        >
+          Statistics
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/jobs">Jobs</NavLink>
+        <NavLink
+          to="/applied"
+          className={({ isActive }) =>
+            `font-bold ${isActive ? "text-[#7E90FE]" : ""}`
+          }
+        >
+          Applied Jobs
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/applied">Applied Jobs</NavLink>
-      </li>
-      <li>
-        <NavLink to="/statistics">Statistics</NavLink>
-      </li>
-      <li>
-        <NavLink to="/blogs">Blogs</NavLink>
+        <NavLink
+          to="/blog"
+          className={({ isActive }) =>
+            `font-bold ${isActive ? "text-[#7E90FE]" : ""}`
+          }
+        >
+          Blog
+        </NavLink>
       </li>
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -49,13 +64,19 @@ const Header = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Career Hub</a>
+        <Link to="/">
+          <img
+            src="/public/logo/CareerHub.png"
+            alt="company_logo"
+            className="w-36 h-5"
+          />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Apply Now</a>
+        <a className="btn bg-[#7E90FE] text-white">Apply Now</a>
       </div>
     </div>
   );
