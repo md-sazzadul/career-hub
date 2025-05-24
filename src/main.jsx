@@ -14,7 +14,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, Component: Home },
-      { path: "applied", Component: AppliedJobs },
+      {
+        path: "applied",
+        Component: AppliedJobs,
+        loader: () => fetch("jobs.json"),
+      },
       {
         path: "job/:id",
         Component: JobDetails,
